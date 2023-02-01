@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace MSCAcademy.Week6.BaSiLibree.Core.Interfaces
 {
-    internal interface IRepository
+    public interface IRepository<T>
     {
+        T OttieniDaId(Guid id);
+        void Crea(T nuovoOggetto);
+        void Aggiorna(T aggiornaOggetto);
+        void CancellaDaId(Guid id);
     }
 }

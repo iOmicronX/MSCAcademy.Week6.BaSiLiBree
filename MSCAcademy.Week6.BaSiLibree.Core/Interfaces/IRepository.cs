@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MSCAcademy.Week6.BaSiLibree.Core.Entities
+namespace MSCAcademy.Week6.BaSiLibree.Core.Interfaces
 {
-    internal class Class1
+    internal interface IRepository
     {
     }
 }

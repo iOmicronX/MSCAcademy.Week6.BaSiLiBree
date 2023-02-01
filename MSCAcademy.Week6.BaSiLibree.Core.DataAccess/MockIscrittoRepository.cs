@@ -40,6 +40,11 @@ namespace MSCAcademy.Week6.BaSiLibree.Core.DataAccess
             _iscritti.Add(nuovoOggetto);
         }
 
+        public IEnumerable<Iscritto> Fetch()
+        {
+            return _iscritti;
+        }
+
         public Iscritto OttieniDaId(Guid id)
         {
             //Guardia

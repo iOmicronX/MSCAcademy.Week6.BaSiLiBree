@@ -49,6 +49,11 @@ namespace MSCAcademy.Week6.BaSiLibree.Core.DataAccess
             catalogoLibri.Add(nuovoOggetto);
         }
 
+        public IEnumerable<Libro> Fetch()
+        {
+            return catalogoLibri;
+        }
+
         public Libro OttieniDaId(Guid id)
         {
             if (id == Guid.Empty)

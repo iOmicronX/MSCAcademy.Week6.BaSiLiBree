@@ -40,6 +40,11 @@ namespace MSCAcademy.Week6.BaSiLibree.Core.DataAccess
             _prestiti.Add(nuovoOggetto);
         }
 
+        public IEnumerable<Prestito> Fetch()
+        {
+            return _prestiti;
+        }
+
         public Prestito OttieniDaId(Guid id)
         {
             //Guardia

@@ -8,17 +8,21 @@ using System.Threading.Tasks;
 
 namespace MSCAcademy.Week6.BaSiLibree.Core.BusinessLogic
 {
-    public class BusinessReportisticaRitardatari : //IBusinessReportisticaRitardatari
+    public class BusinessReportisticaRitardatari : IBusinessReportisticaRitardatari
     {
-        private IRepository<Iscritto> dataAccess;
-        public BusinessReportisticaRitardatari(IRepository<Iscritto> dataAccess)
+        private IRepository<Prestito> dataAccess;
+        public BusinessReportisticaRitardatari(IRepository<Prestito> dataAccess)
         {
             this.dataAccess = dataAccess;
         }
 
-        /*public List<Iscritto> ElencoRitardatari()
+        public List<Prestito> ElencoRitardatari()
         {
-            this.dataAccess.
-        }*/
+            var tuttiUtenti=this.dataAccess.Fetch();
+            var utentiRitardatari = tuttiUtenti.Where(x => x.DataFine < DateTime.Now);
+            return (List<Prestito>)utentiRitardatari;
+        }
+
+        
     }
 }

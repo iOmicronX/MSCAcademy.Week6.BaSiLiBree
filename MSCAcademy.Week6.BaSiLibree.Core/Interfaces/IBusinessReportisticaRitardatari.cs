@@ -10,6 +10,6 @@ namespace MSCAcademy.Week6.BaSiLibree.Core.Interfaces
     public interface IBusinessReportisticaRitardatari
     {
 
-        public List<Iscritto> ElencoRitardatari(); 
+        public List<Prestito> ElencoRitardatari(); 
     }
 }

@@ -18,8 +18,15 @@ namespace MSCAcademy.Week6.BaSiLibree.Core.DataAccess
         public void Aggiorna(Libro aggiornaOggetto)
         {
             var libro = OttieniDaId(aggiornaOggetto.Id);
+            if (libro == null)
+            {
+                throw new NullReferenceException("Libro non trovato");
+            } else
+            {
+
             CancellaDaId(libro.Id);
             Crea(aggiornaOggetto);
+            }
         }
 
         public void CancellaDaId(Guid id)

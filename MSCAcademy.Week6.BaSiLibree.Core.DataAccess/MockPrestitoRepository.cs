@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace MSCAcademy.Week6.BaSiLibree.Core.DataAccess
 {
-    public class MockIscrittoRepository : IRepository<Iscritto>
+
+    public class MockPrestitoRepository : IRepository<Prestito>
     {
-        private static readonly List<Iscritto> _iscritti = new List<Iscritto>();
-        public void Aggiorna(Iscritto aggiornaOggetto)
+        private static readonly List<Prestito> _prestiti = new List<Prestito>();
+        public void Aggiorna(Prestito aggiornaOggetto)
         {
-            var iscritto = OttieniDaId(aggiornaOggetto.Id);
-            if (iscritto == null)
+            var prestito = OttieniDaId(aggiornaOggetto.Id);
+            if (prestito == null)
             {
                 throw new NullReferenceException("Iscritto non trovato");
             }
             else
             {
 
-                CancellaDaId(iscritto.Id);
+                CancellaDaId(prestito.Id);
                 Crea(aggiornaOggetto);
             }
-
         }
 
         public void CancellaDaId(Guid id)
@@ -32,27 +32,26 @@ namespace MSCAcademy.Week6.BaSiLibree.Core.DataAccess
             //Guardia
             if (id == Guid.Empty)
                 throw new ArgumentNullException("Id non trovato");
-            _iscritti.Remove(OttieniDaId(id));
+            _prestiti.Remove(OttieniDaId(id));
         }
 
-        public void Crea(Iscritto nuovoOggetto)
+        public void Crea(Prestito nuovoOggetto)
         {
-            _iscritti.Add(nuovoOggetto);
+            _prestiti.Add(nuovoOggetto);
         }
 
-        public Iscritto OttieniDaId(Guid id)
+        public Prestito OttieniDaId(Guid id)
         {
             //Guardia
             if (id == Guid.Empty)
                 throw new ArgumentNullException("Id non trovato");
-            var found = _iscritti.FirstOrDefault(t => t.Id == id);
+            var found = _prestiti.FirstOrDefault(t => t.Id == id);
             if (found == null)
             {
-                throw new ArgumentNullException("Libro null");
+                throw new ArgumentNullException("Prestito null");
             }
             else
                 return found;
-
         }
     }
 }

@@ -1,17 +1,50 @@
-﻿namespace MSCAcademy.Week6.BaSiLiBree.UI
+﻿using Microsoft.Extensions.DependencyInjection;
+using MSCAcademy.Week6.BaSiLibree.Core.BusinessLogic;
+using MSCAcademy.Week6.BaSiLibree.Core.DataAccess;
+using MSCAcademy.Week6.BaSiLibree.Core.Entities;
+using MSCAcademy.Week6.BaSiLibree.Core.Interfaces;
+using System.Net.Sockets;
+using System.Security.Authentication.ExtendedProtection;
+
+namespace MSCAcademy.Week6.BaSiLiBree.UI
+
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            var serviceProvider = new ServiceCollection()
+                .AddTransient<IMainBusinessLogic, MainBusinessLayer>()
+                .AddTransient<IRepository<Iscritto>, MockIscrittoRepository>()
+                .AddTransient<IRepository<Libro>, DataAccessCatalogoLibri>()
+                .AddTransient<IRepository<Prestito>, MockPrestitoRepository>()
+                .BuildServiceProvider();
+
+            IMainBusinessLogic mainBL = serviceProvider.GetService<IMainBusinessLogic>();
+
+            
+            var iscritto1 = new Iscritto(Guid.NewGuid(), "Andrea", "Vacca", new DateOnly(1995, 07, 29), new DateOnly(2023, 01, 29));
+            mainBL.CreaIscr(iscritto1);
             Console.WriteLine("***Benvenuto nel sistema di gestione della tua biblioteca***");
             Console.WriteLine("Seleziona la funzionalità desiderata");
             byte selezione = 0;
             do
             {
+                
                 Menu();
                 selezione = byte.Parse(Console.ReadLine());
                 //switch
+                switch (selezione)
+                {
+                    case 1: 
+                        var iscritto2 = new Iscritto(Guid.NewGuid(), "Darius", "Tirla", new DateOnly(1999, 07, 29), new DateOnly(2022, 01, 29));
+                        mainBL.CreaIscr(iscritto2);
+                        break;
+                    case 2:
+                        var libro1 = new Libro("vcugyua", "Sos", "Melacta", new DateOnly);
+
+
+                }
             } while (selezione != 9);
         }
 

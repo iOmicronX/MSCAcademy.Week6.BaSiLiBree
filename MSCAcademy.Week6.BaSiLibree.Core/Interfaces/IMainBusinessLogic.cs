@@ -25,5 +25,9 @@ namespace MSCAcademy.Week6.BaSiLibree.Core.Interfaces
         public void CancellaIdIscr(Guid id);
         public void CancellaIdPres(Guid id);
 
+        public IEnumerable<Libro> FetchAllLibri();
+        public IEnumerable<Prestito> FetchAllPrestito();
+        public IEnumerable<Iscritto> FetchAllIscritto();
+
     }
 }

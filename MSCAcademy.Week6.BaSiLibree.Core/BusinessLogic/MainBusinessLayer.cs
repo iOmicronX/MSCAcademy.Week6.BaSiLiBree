@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MSCAcademy.Week6.BaSiLibree.Core.BusinessLogic
 {
-    internal class MainBusinessLayer : IMainBusinessLogic
+    public class MainBusinessLayer : IMainBusinessLogic
     {
         private IRepository<Iscritto> repoIscritto;
         private IRepository<Libro> repoLibro;
@@ -77,6 +77,21 @@ namespace MSCAcademy.Week6.BaSiLibree.Core.BusinessLogic
             var tuttiUtenti = repoPres.Fetch();
             var utentiRitardatari = tuttiUtenti.Where(x => x.DataFine < DateTime.Now);
             return (List<Prestito>)utentiRitardatari;
+        }
+
+        public IEnumerable<Iscritto> FetchAllIscritto()
+        {
+            return repoIscritto.Fetch();
+        }
+
+        public IEnumerable<Libro> FetchAllLibri()
+        {
+            return repoLibro.Fetch();
+        }
+
+        public IEnumerable<Prestito> FetchAllPrestito()
+        {
+            return repoPres.Fetch();
         }
 
         public Iscritto OttieniDaIdIscr(Guid id)

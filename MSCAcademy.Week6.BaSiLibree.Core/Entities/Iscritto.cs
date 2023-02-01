@@ -17,9 +17,9 @@ namespace MSCAcademy.Week6.BaSiLibree.Core.Entities
         }
 
         public Guid Id { get; set; }
-        public string Nome { get;  }
-        public string Cognome { get;  }
-        public DateOnly DataDiNascita { get; }
+        public string Nome { get; set; }
+        public string Cognome { get; set; }
+        public DateOnly DataDiNascita { get; set; }
 
 
     }
